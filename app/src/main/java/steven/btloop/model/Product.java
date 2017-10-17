@@ -10,7 +10,7 @@ import java.util.List;
  * Created by TruongNV on 10/3/2017.
  */
 
-public class Product implements Parcelable {
+public class Product implements Serializable {
     protected Product(Parcel in) {
         _id = in.readString();
         name = in.readString();
@@ -24,17 +24,17 @@ public class Product implements Parcelable {
         screen = in.readString();
     }
 
-    public static final Creator<Product> CREATOR = new Creator<Product>() {
-        @Override
-        public Product createFromParcel(Parcel in) {
-            return new Product(in);
-        }
-
-        @Override
-        public Product[] newArray(int size) {
-            return new Product[size];
-        }
-    };
+//    public static final Creator<Product> CREATOR = new Creator<Product>() {
+//        @Override
+//        public Product createFromParcel(Parcel in) {
+//            return new Product(in);
+//        }
+//
+//        @Override
+//        public Product[] newArray(int size) {
+//            return new Product[size];
+//        }
+//    };
 
     public String get_id() {
         return _id;
@@ -137,23 +137,23 @@ public class Product implements Parcelable {
     private String memory;
     private String screen;
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(_id);
-        dest.writeString(name);
-        dest.writeString(artwork);
-        dest.writeString(price);
-        dest.writeList(category);
-        dest.writeInt(viewCount);
-        dest.writeString(os);
-        dest.writeString(fontCamera);
-        dest.writeString(backCamera);
-        dest.writeString(memory);
-        dest.writeString(screen);
-    }
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeString(_id);
+//        dest.writeString(name);
+//        dest.writeString(artwork);
+//        dest.writeString(price);
+//        dest.writeList(category);
+//        dest.writeInt(viewCount);
+//        dest.writeString(os);
+//        dest.writeString(fontCamera);
+//        dest.writeString(backCamera);
+//        dest.writeString(memory);
+//        dest.writeString(screen);
+//    }
 }

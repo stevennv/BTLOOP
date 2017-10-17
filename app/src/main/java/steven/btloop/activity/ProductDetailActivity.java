@@ -3,6 +3,7 @@ package steven.btloop.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -18,7 +19,7 @@ import steven.btloop.model.Product;
 import steven.btloop.utils.Common;
 
 public class ProductDetailActivity extends AppCompatActivity {
-    private TouchImageView tivImage;
+    private ImageView tivImage;
     private TextView tvProductname;
     private TextView tvPrice;
     private TextView tvOs;
@@ -40,7 +41,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     }
 
     protected void iniUI() {
-        tivImage = (TouchImageView) findViewById(R.id.img_detail_product);
+        tivImage = (ImageView) findViewById(R.id.img_detail_product);
         tvProductname = (TextView) findViewById(R.id.tv_name_product);
         tvPrice = (TextView) findViewById(R.id.tv_price);
         tvOs = (TextView) findViewById(R.id.tv_os);
@@ -54,7 +55,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private void getData() {
         if (getIntent() != null) {
             productDetail = (Product) getIntent().getSerializableExtra(Common.PRODUCT_DETAIL);
-            productList = (List<Product>) getIntent().getSerializableExtra(Common.LIST_PRODUCT_SUGGEST);
+//            productList = (List<Product>) getIntent().getSerializableExtra(Common.LIST_PRODUCT_SUGGEST);
             Glide.with(ProductDetailActivity.this).load(productDetail.getArtwork()).into(tivImage);
             tvPrice.setText(productDetail.getPrice());
             tvProductname.setText(productDetail.getName());
@@ -63,9 +64,9 @@ public class ProductDetailActivity extends AppCompatActivity {
             tvBackCamera.setText(productDetail.getBackCamera());
             tvMemory.setText(productDetail.getMemory());
             tvScreen.setText(productDetail.getScreen());
-            adapter = new ListSuggestAdapter(ProductDetailActivity.this, productList);
-            adapter.notifyDataSetChanged();
-            rvSuggest.setAdapter(adapter);
+//            adapter = new ListSuggestAdapter(ProductDetailActivity.this, productList);
+//            adapter.notifyDataSetChanged();
+//            rvSuggest.setAdapter(adapter);
         }
     }
 }
