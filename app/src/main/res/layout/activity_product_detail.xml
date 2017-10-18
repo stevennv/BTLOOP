@@ -12,13 +12,20 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/img_detail_product"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/black">
+
+                <ImageView
+                    android:id="@+id/img_detail_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -26,47 +33,90 @@
                 android:layout_margin="@dimen/padding_10"
                 android:orientation="vertical">
 
+
                 <TextView
-                    android:text="OS"
                     android:id="@+id/tv_name_product"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:textSize="@dimen/text_size_16"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textColor="@color/yellow"
-                    android:textSize="@dimen/text_size_20"
-                    android:textStyle="bold" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/price"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/img_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@mipmap/icon_price" />
+
+                        <TextView
+                            android:id="@+id/tv_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_toEndOf="@+id/img_price"
+                            android:layout_toRightOf="@+id/img_price"
+                            android:scrollbarSize="@dimen/text_size_20"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_14"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:text="Camera trước"
-                            android:id="@+id/tv_os_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:text="@string/os"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14" />
+
+                        <View
+                            android:layout_width="1px"
+                            android:layout_height="match_parent"
+                            android:background="@color/black" />
 
                         <TextView
                             android:id="@+id/tv_os"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_10"
                             android:layout_weight="1"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14" />
@@ -79,22 +129,28 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:text="Camera Sau"
-                            android:id="@+id/tv_front_camera_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:text="@string/front_camera"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14" />
+
+                        <View
+                            android:layout_width="1px"
+                            android:layout_height="match_parent"
+                            android:background="@color/black" />
 
                         <TextView
                             android:id="@+id/tv_front_camera"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_10"
                             android:layout_weight="1"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14" />
@@ -107,22 +163,29 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:text="Bộ nhớ"
-                            android:id="@+id/tv_back_camera_title"
+                            android:id="@+id/tv_front_camera_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:text="@string/back_camera"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14" />
+
+                        <View
+                            android:layout_width="1px"
+                            android:layout_height="match_parent"
+                            android:background="@color/black" />
 
                         <TextView
                             android:id="@+id/tv_back_camera"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_10"
                             android:layout_weight="1"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14" />
@@ -135,22 +198,29 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:text="Màn hình"
-                            android:id="@+id/tv_memory_title"
+                            android:id="@+id/tv_back_camera_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:text="@string/memory"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14" />
+
+                        <View
+                            android:layout_width="1px"
+                            android:layout_height="match_parent"
+                            android:background="@color/black" />
 
                         <TextView
                             android:id="@+id/tv_memory"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_10"
                             android:layout_weight="1"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14" />
@@ -163,21 +233,29 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_screen_title"
+                            android:id="@+id/tv_memory_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:text="@string/screen"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14" />
+
+                        <View
+                            android:layout_width="1px"
+                            android:layout_height="match_parent"
+                            android:background="@color/black" />
 
                         <TextView
                             android:id="@+id/tv_screen"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_10"
                             android:layout_weight="1"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_14" />
@@ -187,14 +265,27 @@
                         android:layout_width="match_parent"
                         android:layout_height="1px"
                         android:background="@color/black" />
+
+
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/top_newest"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_20" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_suggest_product"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_10" />
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_slide_show"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

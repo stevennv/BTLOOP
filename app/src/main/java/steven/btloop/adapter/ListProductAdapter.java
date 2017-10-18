@@ -70,7 +70,7 @@ public class ListProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ProductDetailActivity.class);
-               intent.putExtra(Common.PRODUCT_DETAIL, product);
+                intent.putExtra(Common.PRODUCT_DETAIL, product);
                 context.startActivity(intent);
                 Toast.makeText(context, product.getName(), Toast.LENGTH_SHORT).show();
 

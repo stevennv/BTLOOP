@@ -29,6 +29,7 @@ import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.facebook.share.Share;
 import com.google.gson.Gson;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
@@ -36,7 +37,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity
     private ListProductAdapter adapter;
     private RecyclerView rvListProduct;
     private RecyclerView.LayoutManager layoutManager;
+    private List<Product> suggestList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +84,8 @@ public class MainActivity extends AppCompatActivity
 //        tvName.setText("Mời đăng nhập");
 //            tvName.setOnClickListener(this);
 
-        rvListProduct= (RecyclerView) findViewById(R.id.rv_list_product);
-        layoutManager = new GridLayoutManager(this,2);
+        rvListProduct = (RecyclerView) findViewById(R.id.rv_list_product);
+        layoutManager = new GridLayoutManager(this, 2);
         rvListProduct.setLayoutManager(layoutManager);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -231,18 +235,25 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
-                Log.d(TAG, "onResponse: "+ json);
+                Log.d(TAG, "onResponse: " + json);
                 Gson gson = new Gson();
                 Product[] product = gson.fromJson(json, Product[].class);
                 adapter = new ListProductAdapter(MainActivity.this, product);
                 adapter.notifyDataSetChanged();
-               runOnUiThread(new Runnable() {
-                   @Override
-                   public void run() {
-                       progressDialog.dismiss();
-                       rvListProduct.setAdapter(adapter);
-                   }
-               });
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.dismiss();
+                        rvListProduct.setAdapter(adapter);
+                    }
+                });
+//                List<Product> suggestList = new ArrayList<Product>();
+                for (int i = 0; i < 10; i++) {
+
+                    suggestList.add(product[i]);
+                }
+                Log.d(TAG, "onResponse: CHECK_DATA  " + suggestList.get(0).getBackCamera());
+                utils.saveNewestList(suggestList);
             }
         });
     }

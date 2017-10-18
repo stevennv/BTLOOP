@@ -23,9 +23,9 @@ import steven.btloop.model.Product;
 
 public class ListSuggestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
-    private List<Product> listSuggest = new ArrayList<>();
+    private Product[] listSuggest;
 
-    public ListSuggestAdapter(Context context, List<Product> listSuggest) {
+    public ListSuggestAdapter(Context context, Product[] listSuggest) {
         this.context = context;
         this.listSuggest = listSuggest;
     }
@@ -42,7 +42,7 @@ public class ListSuggestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
-        Product product = listSuggest.get(position);
+        Product product = listSuggest[position];
         myViewHolder.tvPrice.setText(product.getPrice());
         myViewHolder.tvName.setText(product.getName());
         String url;
@@ -52,7 +52,7 @@ public class ListSuggestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public int getItemCount() {
-        return listSuggest.size();
+        return listSuggest.length;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

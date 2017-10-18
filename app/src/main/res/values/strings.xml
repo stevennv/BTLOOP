@@ -8,4 +8,11 @@
 
     <string name="action_settings">Settings</string>
     <string name="pls_login">Mời bạn đăng nhập</string>
+    <string name="os">Os</string>
+    <string name="price">Giá</string>
+    <string name="front_camera">Camera trước</string>
+    <string name="back_camera">Camera sau</string>
+    <string name="memory">Bộ nhớ</string>
+    <string name="screen">Màn hình</string>
+    <string name="top_newest">Những sản phẩm mới</string>
 </resources>
