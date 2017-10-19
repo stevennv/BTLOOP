@@ -268,25 +268,35 @@
 
 
                 </LinearLayout>
+            </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="@string/top_newest"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_20" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/top_newest"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_20" />
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_suggest_product"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_10" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_suggest_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_10" />
+
+            <me.crosswall.lib.coverflow.core.PagerContainer
+                android:id="@+id/pager_container"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="?attr/colorPrimary">
+
                 <android.support.v4.view.ViewPager
                     android:id="@+id/vp_slide_show"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
+                    android:layout_width="250dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center" />
+            </me.crosswall.lib.coverflow.core.PagerContainer>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -15,11 +15,17 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import me.crosswall.lib.coverflow.CoverFlow;
+import me.crosswall.lib.coverflow.core.CoverTransformer;
+import me.crosswall.lib.coverflow.core.PagerContainer;
 import steven.btloop.R;
 import steven.btloop.adapter.CustomPagerAdapter;
 import steven.btloop.adapter.ListProductAdapter;
 import steven.btloop.adapter.ListSuggestAdapter;
+import steven.btloop.customview.MyCustomLayoutManager;
 import steven.btloop.customview.TouchImageView;
 import steven.btloop.model.Product;
 import steven.btloop.model.ProductList;
@@ -44,6 +50,8 @@ public class ProductDetailActivity extends AppCompatActivity {
     private SharePreferenceUtils utils;
     private LinearLayoutManager layoutManager;
     private CustomPagerAdapter pagerAdapter;
+    private PagerContainer pagerContainer;
+    private static int currentPage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +73,9 @@ public class ProductDetailActivity extends AppCompatActivity {
         tvScreen = (TextView) findViewById(R.id.tv_screen);
         rvSuggest = (RecyclerView) findViewById(R.id.rv_suggest_product);
         vpSlide = (ViewPager) findViewById(R.id.vp_slide_show);
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        pagerContainer = (PagerContainer) findViewById(R.id.pager_container);
+        layoutManager = new MyCustomLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         rvSuggest.setLayoutManager(layoutManager);
     }
 
@@ -83,10 +93,9 @@ public class ProductDetailActivity extends AppCompatActivity {
             suggestList = utils.getNewestList();
             adapter = new ListSuggestAdapter(ProductDetailActivity.this, suggestList);
             adapter.notifyDataSetChanged();
-            pagerAdapter = new CustomPagerAdapter(this, suggestList);
-            vpSlide.setAdapter(pagerAdapter);
             rvSuggest.setAdapter(adapter);
-            rvSuggest.setVisibility(View.GONE);
+            pagerContainer.setVisibility(View.GONE);
+            vpSlide.setVisibility(View.GONE);
             final int speedScroll = 1500;
             final Handler handler = new Handler();
             final Runnable runnable = new Runnable() {
@@ -96,6 +105,9 @@ public class ProductDetailActivity extends AppCompatActivity {
                 public void run() {
                     if (count < suggestList.length) {
                         rvSuggest.scrollToPosition(++count);
+                        handler.postDelayed(this, speedScroll);
+                    } else {
+                        rvSuggest.scrollToPosition(0);
                         handler.postDelayed(this, speedScroll);
                     }
 
